@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lakshana R | Electronics & Communication Engineer</title>
+<style>
+  :root {
+    --bg: #06090f;
+    --bg-alt: #0d131c;
+    --card: #111925;
+    --border: #22303f;
+    --text: #d7dee6;
+    --text-dim: #7d8b9a;
+    --accent: #4fd1ff;
+    --accent-2: #34e89e;
+    --accent-3: #a78bfa;
+    --mono: 'Consolas', 'SFMono-Regular', monospace;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Segoe UI', system-ui, sans-serif;
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  a { color: var(--accent); text-decoration: none; }
+
+  /* Background glow effect */
+  body::before {
+    content: "";
+    position: fixed;
+    top: -20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 900px;
+    height: 900px;
+    background: radial-gradient(circle, rgba(79,209,255,0.08) 0%, rgba(167,139,250,0.04) 40%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 48px;
+    background: rgba(6,9,15,0.85);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--border);
+  }
+
+  .logo {
+    font-family: var(--mono);
+    font-weight: 700;
+    font-size: 1.15rem;
+    color: #fff;
+  }
+  .logo span { color: var(--accent); }
+
+  nav { display: flex; gap: 30px; }
+  nav a {
+    color: var(--text-dim);
+    font-size: 0.92rem;
+    font-weight: 500;
+    position: relative;
+    padding-bottom: 4px;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: var(--text); }
+  nav a::after {
+    content: "";
+    position: absolute;
+    left: 0; bottom: 0;
+    width: 0; height: 2px;
+    background: var(--accent);
+    transition: width 0.25s;
+  }
+  nav a:hover::after { width: 100%; }
+
+  /* HERO */
+  .hero {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 130px 48px 100px;
+    text-align: center;
+  }
+
+  .hero .eyebrow {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    color: var(--accent-2);
+    border: 1px solid var(--border);
+    padding: 6px 16px;
+    border-radius: 20px;
+    margin-bottom: 26px;
+    letter-spacing: 0.5px;
+  }
+
+  .hero h1 {
+    font-size: 3.4rem;
+    color: #fff;
+    font-weight: 800;
+    letter-spacing: -1px;
+    margin-bottom: 8px;
+  }
+
+  .hero h2 {
+    font-size: 1.5rem;
+    font-weight: 500;
+    background: linear-gradient(90deg, var(--accent), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    margin-bottom: 26px;
+  }
+
+  .hero p {
+    max-width: 620px;
+    margin: 0 auto 36px;
+    color: var(--text-dim);
+    font-size: 1.05rem;
+  }
+
+  .btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+  .btn {
+    padding: 13px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .btn:hover { transform: translateY(-2px); text-decoration: none; }
+
+  .btn-primary {
+    background: linear-gradient(90deg, var(--accent), var(--accent-3));
+    color: #06090f;
+  }
+  .btn-outline {
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover { border-color: var(--accent); }
+
+  section {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 90px 48px;
+  }
+
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 48px;
+    color: var(--accent-2);
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+  }
+  .section-tag::before { content: color: var(--text-dim); }
+
+  section h3.section-title {
+    font-size: 28px;
+    color: #fff;
+    margin-bottom: 44px;
+    max-width: 600px;
+  }
+
+  /* EXPERTISE */
+  .expertise-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+  }
+
+  .exp-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 28px 24px;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .exp-card:hover { border-color: var(--accent); transform: translateY(-4px); }
+
+  .exp-card .icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-3));
+    margin-bottom: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.1rem;
+    color: #06090f;
+    font-weight: 800;
+  }
+
+  .exp-card h4 { color: #fff; font-size: 1.05rem; margin-bottom: 12px; }
+
+  .exp-card ul { list-style: none; color: var(--text-dim); font-size: 0.88rem; }
+  .exp-card ul li { padding: 3px 0; }
+  .exp-card ul li::before { content: "▹ "; color: var(--accent-2); }
+
+  /* PROJECTS */
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 22px;
+  }
+
+  .project-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 26px;
+    position: relative;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .project-card:hover { border-color: var(--accent-2); transform: translateY(-4px); }
+
+  .status-badge {
+    position: absolute;
+    top: 24px; right: 24px;
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    padding: 4px 10px;
+    border-radius: 12px;
+    background: rgba(52,232,158,0.12);
+    color: var(--accent-2);
+  }
+  .status-badge.dev { background: rgba(167,139,250,0.12); color: var(--accent-3); }
+
+  .project-card h4 { color: #fff; font-size: 1.1rem; margin: 6px 26px 12px 0; }
+  .project-card p { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 16px; }
+
+  .tag-row { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 16px; }
+  .tag-row span {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--accent);
+    background: rgba(79,209,255,0.08);
+    padding: 4px 10px;
+    border-radius: 5px;
+  }
+
+  .project-card .links a {
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-right: 18px;
+  }
+
+  /* TIMELINE */
+  .timeline { position: relative; padding-left: 30px; }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 6px; top: 6px; bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent), var(--accent-3), transparent);
+  }
+
+  .timeline-item { position: relative; padding-bottom: 40px; }
+  .timeline-item:last-child { padding-bottom: 0; }
+
+  .timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -30px; top: 4px;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px rgba(79,209,255,0.15);
+  }
+
+  .timeline-item .date {
+    font-family: var(--mono);
+    font-size: 0.8rem;
+    color: var(--accent-2);
+    margin-bottom: 6px;
+  }
+  .timeline-item h4 { color: #fff; font-size: 1.05rem; margin-bottom: 6px; }
+  .timeline-item p { color: var(--text-dim); font-size: 0.92rem; }
+
+  /* CERTS */
+  .cert-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 12px;
+  }
+  .cert-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    font-size: 0.88rem;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: relative;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .cert-item:hover { border-color: var(--accent-2); transform: translateY(-4px); }
+  .cert-item::before { content: "✓"; color: var(--accent-2); font-weight: 700; }
+
+  /* CONTACT */
+  .contact-wrap {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+  @media (max-width: 700px) { .contact-wrap { grid-template-columns: 1fr; } }
+
+  .contact-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 22px 26px;
+    position: relative;
+    transition: border-color 0.25s, transform 0.25s;
+  }
+  .contact-card .label {
+    font-family: var(--mono);
+    font-size: 0.75rem;
+    color: var(--text-dim);
+    text-transform: uppercase;
+    letter-spacing: 0.6px;
+    margin-bottom: 8px;
+  }
+  .contact-card:hover { border-color: var(--accent-2); transform: translateY(-4px); }
+  .contact-card .value { color: var(--accent); font-size: 1rem; word-break: break-word; }
+
+  footer {
+    text-align: center;
+    padding: 50px 20px;
+    color: var(--text-dim);
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    border-top: 1px solid var(--border);
+    position: relative;
+    z-index: 1;
+  }
+  footer a { color: var(--text-dim); margin: 0 10px; }
+  footer a:hover { color: var(--accent); }
+
+  @media (max-width: 640px) {
+    header { padding: 16px 22px; }
+    nav { gap: 16px; }
+    nav a { font-size: 0.8rem; }
+    .hero { padding: 90px 22px 60px; }
+    .hero h1 { font-size: 2.3rem; }
+    .hero h2 { font-size: 1.1rem; }
+    section { padding: 60px 22px; }
+    section h3.section-title { font-size: 1.6rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">Lakshana<span>_R</span></div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#projects">Projects</a>
+    <a href="#experience">Education and Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<div class="hero" id="home">
+  <div class="eyebrow">Electronics &amp; Communication Engineer</div>
+  <h1>Lakshana R</h1>
+  <h2>IoT, Embedded Systems &amp; Machine Learning</h2>
+  <p>
+    I build systems that bridge hardware and intelligence &mdash; from IoT-based sensor networks
+    and embedded devices to machine learning models that turn raw sensor data into real decisions.
+    Currently pursuing my B.E. in ECE at R.M.K. Engineering College, Chennai.
+  </p>
+  <div class="btn-row">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+  </div>
+</div>
+
+<section id="expertise">
+  <div class="section-tag">EXPERTISE</div>
+  <h3 class="section-title">Technical foundation across hardware, software &amp; ML</h3>
+  <div class="expertise-grid">
+    <div class="exp-card">
+      <div class="icon">EDA</div>
+      <h4>VLSI &amp; Digital Design</h4>
+      <ul>
+        <li>Cadence Virtuoso</li>
+        <li>Xilinx</li>
+        <li>Verilog (HDL)</li>
+        <li>Analog &amp; Digital Layouts</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="icon">IoT</div>
+      <h4>IoT &amp; Embedded</h4>
+      <ul>
+        <li>Arduino / ESP32</li>
+        <li>Sensor Integration</li>
+        <li>Blynk / ThingSpeak</li>
+        <li>LoRa Communication</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="icon">{ }</div>
+      <h4>Programming</h4>
+      <ul>
+        <li>C</li>
+        <li>C++</li>
+        <li>Java</li>
+        <li>Data Structures</li>
+        <li>HTML, CSS, JS</li>
+      </ul>
+    </div>
+    <div class="exp-card">
+      <div class="icon">ML</div>
+      <h4>Machine Learning</h4>
+      <ul>
+        <li>Decision Trees</li>
+        <li>Deep Learning Basics</li>
+        <li>Model Deployment</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="section-tag">PROJECTS</div>
+  <h3 class="section-title">Featured work</h3>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <span class="status-badge">Completed</span>
+      <h4>IoT-Based Smart Shoe for the Blind</h4>
+      <p>
+        An IoT-based smart shoe using ESP32, ultrasonic, water, flame, and GPS sensors for obstacle
+        detection and environmental hazard awareness &mdash; with real-time voice/audio alerts and
+        GPS-based location tracking for safe, independent navigation.
+      </p>
+      <div class="tag-row">
+        <span>IoT</span><span>ESP32</span><span>GPS</span><span>Ultrasonic</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="status-badge">Completed</span>
+      <h4>Decision Tree Based Machine Learning Framework for Early Risk Prediction in Soldier Health Monitoring Using IoT and LoRa Communication</h4>
+      <p>
+        Real-time health monitoring integrating ESP32, MAX30102, MPU6050, DHT22, GPS NEO-6M, and
+        LoRa communication for continuous vital sign, environment, and motion tracking. Decision
+        Tree ML model with a Flask dashboard for risk prediction and GPS visualization.
+      </p>
+      <div class="tag-row">
+        <span>ESP32</span><span>Decision Tree</span><span>LoRa</span><span>Flask</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/lxnR5/DTMLFERPSHM" target="_blank">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <span class="status-badge dev">Deployed</span>
+      <h4>Azure Portfolio Deployment</h4>
+      <p>
+        This portfolio, provisioned and deployed end-to-end on an Azure Virtual Machine running
+        IIS &mdash; from resource group creation through a live public IP with a custom DNS name.
+      </p>
+      <div class="tag-row">
+        <span>HTML</span><span>CSS</span><span>Azure</span><span>IIS</span>
+      </div>
+      <div class="links">
+        <a href="https://github.com/lxnR5/Azure-Portfolio-Deployment" target="_blank">GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="experience">
+  <div class="section-tag">EDUCATION &amp; EXPERIENCE</div>
+  <h3 class="section-title">Where I've been</h3>
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="date">2023 &ndash; Present</div>
+      <h4>B.E. Electronics &amp; Communication Engineering</h4>
+      <p>R.M.K. Engineering College, Chennai, Tamil Nadu &middot;</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">2025 &ndash; 2026</div>
+      <h4>Vice Chairperson, IEEE Systems Council</h4>
+      <p>R.M.K. Engineering College, Chennai, Tamil Nadu &middot;</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">2022 &ndash; 2023</div>
+      <h4>Class XII (CBSE)</h4>
+      <p>Sri R.M. Jain Vidhyashram, Tiruvallur, Tamil Nadu &middot; 86.8%</p>
+    </div>
+    <div class="timeline-item">
+      <div class="date">2020 &ndash; 2021</div>
+      <h4>Class X (CBSE)</h4>
+      <p>Sri R.M. Jain Vidhyashram, Tiruvallur, Tamil Nadu &middot; 88%</p>
+    </div>
+  </div>
+</section>
+
+<section id="certifications">
+  <div class="section-tag">CERTIFICATIONS</div>
+  <h3 class="section-title">Continuous learning</h3>
+  <div class="cert-grid">
+    <div class="cert-item">
+      <h4>The Linux Foundation &mdash; Introduction to Linux</h4>
+      <div class="links">
+        <a href="https://drive.google.com/file/d/168naSC9bj09jVRKMborMH1oE54MWGaJc/view?usp=drive_link" target="_blank">Certificate</a>
+      </div>
+    </div>
+    <div class="cert-item">
+      <h4>e-Yantra &mdash; eLSI: Embedded Systems &amp; Robotics</h4>
+      <div class="links">
+        <a href="https://drive.google.com/file/d/13dyJ8ILTHRWw4ZU_PF59kH5S9QVAChWz/view?usp=drive_link" target="_blank">Certificate</a>
+      </div>
+    </div>
+    <div class="cert-item">
+      <h4>TOEFL &mdash; Level 1 (503/677)</h4>
+      <div class="links">
+        <a href="https://drive.google.com/file/d/1QntcauaxsiN48EhQQyJbmQRy47VKwWv1/view?usp=drive_link" target="_blank">Certificate</a>
+      </div>
+    </div>
+    <div class="cert-item">
+      <h4>Simplilearn &mdash; Azure Fundamentals</h4>
+      <div class="links">
+        <a href="https://drive.google.com/file/d/1MUmGCAnTE8e1Xfr3uZfQJgPiv-l_9JM9/view?usp=drive_link" target="_blank">Certificate</a>
+      </div>
+    </div>
+    <div class="cert-item"><h4>NPTEL &mdash; Analog VLSI Design</h4></div>
+    <div class="cert-item"><h4>NPTEL &mdash; VLSI Design Flow: RTL to GDS</h4></div>
+    <div class="cert-item"><h4>NPTEL &mdash; Python for Data Science</h4></div>
+    <div class="cert-item"><h4>NPTEL &mdash; The Joy of Computing using Python</h4></div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="section-tag">CONTACT</div>
+  <h3 class="section-title">Let's connect</h3>
+  <div class="contact-wrap">
+    <div class="contact-card">
+      <div class="label">Email</div>
+      <div class="value">rk.lakshana2005@gmail.com</div>
+    </div>
+    <div class="contact-card">
+      <div class="label">GitHub</div>
+      <div class="value"><a href="https://github.com/lxnr5" target="_blank">github.com/lxnr5</a></div>
+    </div>
+    <div class="contact-card">
+      <div class="label">LinkedIn</div>
+      <div class="value"><a href="https://linkedin.com/in/lakexists" target="_blank">linkedin.com/in/lakexists</a></div>
+    </div>
+    <div class="contact-card">
+      <div class="label">Other Site</div>
+      <div class="value"><a href="https://lakexists.me" target="_blank">lakexists.me</a></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="https://github.com/lxnr5" target="_blank">GitHub</a>
+    <a href="https://linkedin.com/in/lakexists" target="_blank">LinkedIn</a>
+    <a href="https://lakexists.me" target="_blank">lakexists.me</a>
+  </div>
+  <div style="margin-top:14px;">&copy; 2026 Lakshana R &mdash; Deployed on Azure with IIS</div>
+</footer>
+
+</body>
+</html>
