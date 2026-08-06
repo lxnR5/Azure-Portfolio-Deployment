@@ -6,32 +6,35 @@
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?logo=css3&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![HTTPS](https://img.shields.io/badge/HTTPS-SSL%2FTLS-green)
 
 # Azure Portfolio Website Deployment
 
-> Deploying a personal portfolio website on **Microsoft Azure** using a **Windows Server Virtual Machine**, **Internet Information Services (IIS)**, **Remote Desktop Protocol (RDP)**, **Public IP**, and **Network Security Group (NSG)**.
+> Deploying a personal portfolio website on **Microsoft Azure** using a **Windows Server Virtual Machine**, **Internet Information Services (IIS)**, **Remote Desktop Protocol (RDP)**, **Azure Networking**, **Public IP**, **Azure DNS**, and **Network Security Groups (NSG)**.
 
 ---
 
-## 📌 Overview
+# 📌 Overview
 
 This project demonstrates the complete deployment of a personal portfolio website on **Microsoft Azure Cloud**.
 
-Instead of hosting the website locally, the application is deployed on an **Azure Windows Server Virtual Machine**, configured using **Internet Information Services (IIS)**, and made accessible over the internet through an **Azure Public IP** and **Azure DNS**.
+Instead of hosting the website locally, the application is deployed on a **Windows Server Virtual Machine**, configured using **Internet Information Services (IIS)**, and made accessible over the internet through an **Azure Public IP** and **Azure DNS**.
 
-This project helped me gain practical experience with cloud infrastructure, virtual machine provisioning, web server configuration, and website deployment.
+The project also explores **HTTP & HTTPS communication**, **SSL certificate configuration**, and Azure networking concepts involved in deploying a real-world web application.
+
+This project provided practical experience with cloud infrastructure, Windows Server administration, web server configuration, and website deployment.
 
 ---
 
-## 🎯 Project Objective
+# 🎯 Project Objective
 
 The primary objective of this project is to understand how cloud infrastructure is used to deploy real-world applications.
 
-Rather than simply creating Azure resources, the goal is to build an environment where users can access an application from anywhere over the internet.
+Rather than simply creating Azure resources, the goal is to build an environment where users can securely access an application from anywhere over the internet.
 
 ---
 
-## 🛠️ Technologies Used
+# 🛠️ Technologies Used
 
 - Microsoft Azure
 - Windows Server 2025
@@ -40,100 +43,145 @@ Rather than simply creating Azure resources, the goal is to build an environment
 - HTML5
 - CSS3
 - JavaScript
+- HTTP
+- HTTPS (SSL/TLS)
 
 ---
 
-## ☁️ Azure Services Used
+# ☁️ Azure Services Used
 
 | Azure Service | Purpose |
 |---------------|---------|
-| Resource Group | Organizes all project resources |
-| Virtual Machine | Hosts the website |
-| Public IP | Enables internet access |
-| Azure DNS | Provides a public domain name |
-| Network Security Group (NSG) | Controls inbound and outbound traffic |
-| Virtual Network (VNet) | Enables secure communication between Azure resources |
+| Resource Group | Organizes all Azure resources |
+| Windows Server Virtual Machine | Hosts the portfolio website |
+| Public IP Address | Enables internet accessibility |
+| Azure DNS | Provides a public hostname |
+| Network Security Group (NSG) | Controls HTTP (80), HTTPS (443), and RDP (3389) traffic |
+| Virtual Network (VNet) | Enables communication between Azure resources |
 
 ---
 
-## 🏗️ Project Architecture
+# 🏗️ Project Architecture
 
 ```text
-                Internet
-                    │
-                    ▼
-        Azure Public DNS / Public IP
-                    │
-                    ▼
-      Network Security Group (NSG)
-                    │
-                    ▼
-      Windows Server Virtual Machine
-                    │
-                    ▼
-          IIS Web Server
-                    │
-                    ▼
-      Portfolio Website (HTML/CSS/JS)
+                     Internet
+                          │
+                          ▼
+              Azure DNS / Public IP
+                          │
+                          ▼
+      Azure Network Security Group (NSG)
+             HTTP (80) | HTTPS (443)
+                          │
+                          ▼
+      Windows Server 2025 Virtual Machine
+                          │
+                          ▼
+      Internet Information Services (IIS)
+                          │
+                          ▼
+       Portfolio Website (HTML/CSS/JavaScript)
 ```
 
 ---
 
-## ⚙️ Deployment Steps
+# ⚙️ Deployment Steps
 
-- Created an Azure Account
-- Created a Resource Group
-- Provisioned a Windows Server Virtual Machine
-- Connected to the VM using Remote Desktop (RDP)
+- Created an Azure Resource Group
+- Provisioned a Windows Server 2025 Virtual Machine
+- Connected to the VM using Remote Desktop Protocol (RDP)
 - Installed and configured Internet Information Services (IIS)
-- Uploaded website files to the IIS web directory
-- Configured networking using Public IP and NSG
-- Verified successful deployment through the Azure public URL
+- Uploaded website files to the IIS web root directory
+- Configured Azure Public IP and Azure DNS
+- Configured Azure Network Security Group (NSG) rules
+- Enabled HTTP (Port 80)
+- Enabled HTTPS (Port 443)
+- Created and configured an SSL certificate in IIS
+- Configured HTTPS bindings
+- Tested website accessibility from desktop and mobile devices
+- Explored Let's Encrypt integration for trusted SSL certificates
 
 ---
 
----
+# 🌐 Live Website
 
-## 🌐 Live Website
+### HTTP (Working)
 
-**Portfolio Website**
-
-
-**HTTP (Working):**
 👉 **http://104.214.169.160**
 
-**HTTPS (SSL configuration in progress):**
+### HTTPS (Under SSL Configuration)
+
 👉 **https://lakshana-portfolio.eastasia.cloudapp.azure.com**
 
----
+> **Note:** HTTPS has been configured using an SSL certificate. A trusted Certificate Authority (CA) certificate is currently being configured, so some browsers may display a security warning.
 
 ---
 
-## 📚 Key Learnings
+# 🚧 Challenges Faced
 
-Through this project, I gained hands-on experience with:
+During deployment, several real-world challenges were encountered and explored, including:
+
+- Configuring IIS on Windows Server
+- Understanding Azure networking components
+- Configuring Network Security Group (NSG) rules
+- Understanding the difference between HTTP and HTTPS
+- Creating and binding SSL certificates in IIS
+- Troubleshooting browser security warnings
+- Exploring Let's Encrypt certificate generation
+- Testing website accessibility across desktop and mobile devices
+
+These challenges provided valuable hands-on experience in cloud deployment and web server administration.
+
+---
+
+# 📚 Key Learnings
+
+Through this project, I gained practical experience with:
 
 - Microsoft Azure Fundamentals
-- Azure Virtual Machine Deployment
+- Azure Resource Management
 - Windows Server Administration
-- IIS Configuration
-- Remote Desktop (RDP)
+- Azure Virtual Machine Deployment
+- IIS Web Server Configuration
+- Remote Desktop Protocol (RDP)
 - Azure Networking
 - Public IP Configuration
-- Network Security Groups
+- Azure DNS
+- Network Security Groups (NSG)
+- HTTP & HTTPS Communication
+- SSL/TLS Certificates
 - Website Deployment
-- Cloud Infrastructure
+- Cloud Infrastructure Fundamentals
 
 ---
 
-## 👨‍💻 Author
+# 🚀 Future Improvements
+
+- Configure a trusted SSL certificate using Let's Encrypt
+- Connect a custom domain
+- Enable automatic HTTP to HTTPS redirection
+- Deploy backend services
+- Integrate Azure SQL Database
+- Implement CI/CD using GitHub Actions
+- Monitor application availability using Azure Monitor
+
+---
+
+---
+
+# 👩‍💻 Author
 
 **Lakshana R**
 
 Electronics and Communication Engineering (ECE)
 
-Passionate about Cloud Computing, Embedded Systems, IoT, and AI.
+Interested in:
+
+- Cloud Computing
+- Embedded Systems
+- Internet of Things (IoT)
+- Artificial Intelligence
 
 ---
 
-⭐ If you found this project interesting, feel free to star this repository!
+⭐ **If you found this project interesting, feel free to star this repository!**
