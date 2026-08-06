@@ -132,23 +132,6 @@ Rather than simply creating Azure resources, the goal is to build an environment
 
 ---
 
-## 📂 Repository Structure
-
-```text
-Azure-Portfolio-Deployment/
-│
-├── README.md
-├── website/
-│   ├── index.html
-│   ├── style.css
-│   ├── script.js
-│   └── assets/
-│
-├── screenshots/
-│
-└── documentation/
-```
-
 ---
 
 ## 📚 Key Learnings
