@@ -128,7 +128,12 @@ Rather than simply creating Azure resources, the goal is to build an environment
 
 **Portfolio Website**
 
-👉 **http://lakshana-portfolio.eastasia.cloudapp.azure.com/**
+
+**HTTP (Working):**
+👉 **http://104.214.169.160**
+
+**HTTPS (SSL configuration in progress):**
+👉 **https://lakshana-portfolio.eastasia.cloudapp.azure.com**
 
 ---
 
