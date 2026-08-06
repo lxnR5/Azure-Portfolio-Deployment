@@ -92,36 +92,6 @@ Rather than simply creating Azure resources, the goal is to build an environment
 
 ---
 
-## 📸 Project Screenshots
-
-### Azure Fundamentals Learning
-
-> *(Add Screenshot)*
-
----
-
-### Creating Virtual Machine
-
-> *(Add Screenshot)*
-
----
-
-### Connecting through Remote Desktop
-
-> *(Add Screenshot)*
-
----
-
-### Windows Server
-
-> *(Add Screenshot)*
-
----
-
-### Portfolio Website Running on Azure
-
-> *(Add Screenshot)*
-
 ---
 
 ## 🌐 Live Website
